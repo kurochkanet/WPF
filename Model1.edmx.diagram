@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fa17ce3edff94588802564dec8e5afc2" Name="Diagram1">
+        <EntityTypeShape EntityType="HospytalModel1.Compagnie_Assurance" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospytalModel1.Departemente" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospytalModel1.Patient" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospytalModel1.sysdiagrams" Width="1.5" PointX="2.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospytalModel1.TypeChambre" Width="1.5" PointX="3.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospytalModel1.TypeCommodite" Width="1.5" PointX="3.75" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="HospytalModel1.FK_Patient_Compagnie_Assurance" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="HospytalModel1.TypeChirurgie" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HospytalModel1.DossierAdmission" Width="1.5" PointX="8.625" PointY="4.625" />
+        <AssociationConnector Association="HospytalModel1.FK_DossierAdmission_Patient" />
+        <AssociationConnector Association="HospytalModel1.FK_DossierAdmission_TypeChirurgie" />
+        <EntityTypeShape EntityType="HospytalModel1.Frais" Width="1.5" PointX="6" PointY="15.25" />
+        <AssociationConnector Association="HospytalModel1.FK_Frais_TypeChambre" />
+        <AssociationConnector Association="HospytalModel1.FK_Frais_TypeCommodite" />
+        <EntityTypeShape EntityType="HospytalModel1.Parent" Width="1.5" PointX="10.375" PointY="9" />
+        <AssociationConnector Association="HospytalModel1.FK_Patient_Parent" />
+        <EntityTypeShape EntityType="HospytalModel1.Medecin" Width="1.5" PointX="5.375" PointY="3.875" />
+        <AssociationConnector Association="HospytalModel1.FK_Patient_Medecin" />
+        <AssociationConnector Association="HospytalModel1.FK_Medecin_Departement" />
+        <EntityTypeShape EntityType="HospytalModel1.Employe" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="HospytalModel1.Chambre" Width="1.5" PointX="6" PointY="12.125" />
+        <AssociationConnector Association="HospytalModel1.FK_Chambre_Departemente" />
+        <AssociationConnector Association="HospytalModel1.FK_Chambre_TypeChambre" />
+        <EntityTypeShape EntityType="HospytalModel1.TypeLit" Width="1.5" PointX="6" PointY="9.5" />
+        <EntityTypeShape EntityType="HospytalModel1.Lit" Width="1.5" PointX="8.25" PointY="12.875" />
+        <AssociationConnector Association="HospytalModel1.FK_Lit_Chambre" />
+        <AssociationConnector Association="HospytalModel1.FK_DossierAdmission_Lit" />
+        <AssociationConnector Association="HospytalModel1.FK_Lit_TypeLit" />
+        <EntityTypeShape EntityType="HospytalModel1.Facture" Width="1.5" PointX="11.25" PointY="6" />
+        <AssociationConnector Association="HospytalModel1.FK_Facture_Frais" />
+        <AssociationConnector Association="HospytalModel1.FK_Facture_Patient" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

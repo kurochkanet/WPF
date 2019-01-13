@@ -1,0 +1,127 @@
+﻿<Window x:Class="Hospital.FenetrePrepose"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="FenetrePrepose" Height="550" Width="500" Loaded="Window_Loaded">
+    <Grid >
+
+        <TabControl x:Name="tabControl" Width="492" Canvas.Left="-110" Canvas.Top="31">
+            <TabControl.Background>
+                <ImageBrush/>
+            </TabControl.Background>
+            <TabItem Header="Patient">
+                <Grid Background="#FFC8DDFB" Margin="-4,-3,-2,-7">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="181*"/>
+                        <ColumnDefinition Width="305*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label" Content="NSS:" HorizontalAlignment="Left" Margin="10,15,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label1" Content="Nom:" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label2" Content="Prenom:" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label3" Content="Date naissance:" HorizontalAlignment="Left" Margin="9,98,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label4" Content="Adresse:" HorizontalAlignment="Left" Margin="11,127,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label5" Content="Ville:" HorizontalAlignment="Left" Margin="12,154,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label6" Content="Province:" HorizontalAlignment="Left" Margin="12,181,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Label x:Name="label7" Content="Code postal:" HorizontalAlignment="Left" Margin="11,210,0,0" VerticalAlignment="Top" Height="27" FontSize="10"/>
+                    <Label x:Name="label8" Content="Telephone:" HorizontalAlignment="Left" Margin="12,241,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <Button x:Name="btAjouterPatient" Content="Ajouter Patient" HorizontalAlignment="Left" Margin="13,381,0,0" VerticalAlignment="Top" Width="86" Click="btAjoutPatient_Click"/>
+                    <Button x:Name="btReinitialiserPatient" Content="Reinitialiser" HorizontalAlignment="Left" Margin="70,45,0,0" VerticalAlignment="Top" Width="68" Click="btReinitialiserPatient_Click" Grid.Column="1"/>
+                    <Button x:Name="btQuitterPatient" Content="Quitter" HorizontalAlignment="Left" Margin="204,451,0,0" VerticalAlignment="Top" Width="75" Click="btQuitterPatient_Click" Grid.Column="1"/>
+                    <TextBox x:Name="tbNSS" HorizontalAlignment="Left" Height="23" Margin="103,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"  />
+                    <TextBox x:Name="tbNom" HorizontalAlignment="Left" Height="23" Margin="103,38,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbPrenom" HorizontalAlignment="Left" Height="23" Margin="103,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbAdress" HorizontalAlignment="Left" Height="23" Margin="103,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <Image x:Name="iStock_471629610_Converted_png" Margin="89,79,22,175" Source="iStock-471629610-Converted.png" Stretch="Fill" Grid.Column="1"/>
+                    <TextBox x:Name="tbVille" HorizontalAlignment="Left" Height="23" Margin="103,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbProvince" HorizontalAlignment="Left" Height="23" Margin="103,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbCodePostal" HorizontalAlignment="Left" Height="23" Margin="103,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbTeleph" HorizontalAlignment="Left" Height="23" Margin="103,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2" PreviewKeyDown="tbTeleph_PreviewKeyDown" />
+                    <DatePicker x:Name="DateNaiss" HorizontalAlignment="Left" Margin="103,94,0,0" VerticalAlignment="Top" Width="134" Grid.ColumnSpan="2" DisplayDate="2018-12-28"  CalendarClosed="DateNaiss_CalendarClosed" />
+                    <Button x:Name="btSauvegarderPatient" Content="Sauvegarder" HorizontalAlignment="Left" Margin="151,381,0,0" VerticalAlignment="Top" Width="86" Grid.ColumnSpan="2" Click="btSauvegarderPatient_Click_1"/>
+                    <Button x:Name="btRechercherPatient" Content="Rechercher" HorizontalAlignment="Left" Margin="70,8,0,0" VerticalAlignment="Top" Width="68" Height="23" Grid.Column="1" Click="btRechercherPatient_Click" Background="#FF2B7ABB" BorderThickness="1" Padding="1"/>
+                    <Label x:Name="label12" Content="Medicin:" HorizontalAlignment="Left" Margin="12,269,0,0" VerticalAlignment="Top" Width="75" FontSize="10"/>
+                    <ComboBox x:Name="cbMedecin" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="103,267,0,0" VerticalAlignment="Top" Width="134" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Specialite"  />
+
+                    <Label x:Name="label13" Content="Assurance privee:" HorizontalAlignment="Left" Margin="12,296,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <ComboBox x:Name="cbAssur" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="104,297,0,0" VerticalAlignment="Top" Width="133" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Nom" />
+                    <Label x:Name="label14" Content="Parent:" HorizontalAlignment="Left" Margin="12,324,0,0" VerticalAlignment="Top" FontSize="10"/>
+                    <ComboBox x:Name="cbParent" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="104,326,0,0" VerticalAlignment="Top" Width="133"  IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Nom"/>
+
+                    <Label x:Name="label26" Content="*" HorizontalAlignment="Left" Margin="82,40,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy" Content="*" HorizontalAlignment="Left" Margin="82,9,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy1" Content="*" HorizontalAlignment="Left" Margin="81,68,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy2" Content="*" HorizontalAlignment="Left" Margin="82,96,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy3" Content="*" HorizontalAlignment="Left" Margin="81,123,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy4" Content="*" HorizontalAlignment="Left" Margin="81,151,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy7" Content="*" HorizontalAlignment="Left" Margin="81,240,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy8" Content="*" HorizontalAlignment="Left" Margin="81,268,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Label x:Name="label26_Copy9" Content="*" HorizontalAlignment="Left" Margin="82,326,0,0" VerticalAlignment="Top" Width="17" Background="{x:Null}" Foreground="#FFF03D3D" Height="21" Visibility="Hidden"/>
+                    <Button x:Name="btAjPar" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="70,326,0,0" VerticalAlignment="Top" Width="25" Click="btAjPar_Click" Height="21">
+                        <Button.Background>
+                            <ImageBrush ImageSource="D:\Formation\C#_Toufik\Projet\Photos\pencil.jpg"/>
+                        </Button.Background>
+
+                    </Button>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Formulaire">
+                <Grid Background="#FFC8DDFB" Margin="-3,-2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="7*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="4"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="132*"/>
+                        <ColumnDefinition Width="27*"/>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="209*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="label15" Content="Patient:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="58" Margin="3,27,0,0" Grid.Column="4" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label17" Content="Type chambre:" HorizontalAlignment="Left" Margin="1,59,0,0" VerticalAlignment="Top" Grid.Column="4" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label18" Content="Type lit:" HorizontalAlignment="Left" Margin="1,92,0,0" VerticalAlignment="Top" Grid.Column="4" Grid.ColumnSpan="3"/>
+                    <Label x:Name="label19" Content="Commodites:" HorizontalAlignment="Left" Margin="0,187,0,0" VerticalAlignment="Top" Grid.Column="4" Grid.ColumnSpan="3"/>
+                    <Label x:Name="lbPatient" Content="" HorizontalAlignment="Left" Margin="79,27,0,0" VerticalAlignment="Top" Width="222" Background="{x:Null}" Grid.ColumnSpan="4" Grid.Column="6"/>
+                    <ComboBox x:Name="cbTypeChambre" HorizontalAlignment="Left" Margin="122,60,0,0" VerticalAlignment="Top" Width="159" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" DisplayMemberPath="Description" Grid.ColumnSpan="4" Grid.Column="6" />
+                    <ComboBox x:Name="cbTypeLit" HorizontalAlignment="Left" Margin="122,92,0,0" VerticalAlignment="Top" Width="159" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" DisplayMemberPath="Description" Grid.ColumnSpan="4" Grid.Column="6"/>
+                    <ComboBox x:Name="cbComm" HorizontalAlignment="Left" Margin="122,191,0,0" VerticalAlignment="Top" Width="159" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" DisplayMemberPath="Nom" Grid.ColumnSpan="4" Grid.Column="6" SelectionChanged="cbComm_SelectionChanged"/>
+                    <DataGrid x:Name="dgCommodites" HorizontalAlignment="Left" Margin="4,233,0,0" VerticalAlignment="Top" Height="136" Width="379" Grid.ColumnSpan="9" Grid.Column="1" />
+                    <Button x:Name="btValider" Content="Valider" HorizontalAlignment="Left" Margin="119.667,193,0,0" VerticalAlignment="Top" Width="75" Grid.Column="9" Click="btValider_Click"/>
+                    <Button x:Name="btQuitterForm" Content="Quitter" HorizontalAlignment="Left" Margin="107.667,450,0,0" VerticalAlignment="Top" Width="75" Grid.Column="9" Click="btQuitterForm_Click"/>
+                    <TextBox x:Name="tbQteComm" HorizontalAlignment="Left" Height="23" Margin="70.667,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="29" Grid.Column="9"  PreviewKeyDown="tbQteComm_PreviewKeyDown"/>
+                    <Label x:Name="label20" Content="Qte:" HorizontalAlignment="Left" Margin="41.667,190,0,0" VerticalAlignment="Top" Grid.Column="9"/>
+                    <Label x:Name="label17_Copy" Content="Numero de chambre:" HorizontalAlignment="Left" Margin="2,123,0,0" VerticalAlignment="Top" Grid.Column="4" Grid.ColumnSpan="3"/>
+                    <ComboBox x:Name="cbChambre_Sel" HorizontalAlignment="Left" Margin="123,124,0,0" VerticalAlignment="Top" Width="159" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Numero" Grid.ColumnSpan="4" Grid.Column="6" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dossiers d'admission">
+                <Grid Margin="0,2,0,-6" Background="#FFC8DDFB">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="182*"/>
+                        <RowDefinition Height="313*"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="label9" Content="Patient:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="lbPatDoss" Content="" HorizontalAlignment="Left" Margin="70,10,0,0" VerticalAlignment="Top" Width="241" FontSize="14"/>
+                    <Label x:Name="label10" Content="Chirurgie programme:" HorizontalAlignment="Left" Margin="10,66,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbChirurProgramm" HorizontalAlignment="Left" Margin="151,66,0,0" VerticalAlignment="Top" Width="236" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Titre" SelectionChanged="cbChirurProgramm_SelectionChanged" />
+                    <Label x:Name="label11" Content="Date admission:" HorizontalAlignment="Left" Margin="11,99,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="DateAdm" HorizontalAlignment="Left" Margin="151,98,0,0" VerticalAlignment="Top" Width="129" DisplayDate="2019-01-03"/>
+                    <Label x:Name="label16" Content="Date chirurgie:" HorizontalAlignment="Left" Margin="13,133,0,0" VerticalAlignment="Top"/>
+                    <DatePicker x:Name="DateChirur" HorizontalAlignment="Left" Margin="151,133,0,0" VerticalAlignment="Top" Width="129" DisplayDate="2019-01-03" />
+                    <Label x:Name="label21" Content="Date du conge:" HorizontalAlignment="Left" Margin="11,166,0,0" VerticalAlignment="Top" Grid.RowSpan="2"/>
+                    <DatePicker x:Name="DateConge" HorizontalAlignment="Left" Margin="151,168,0,0" VerticalAlignment="Top" Width="129" Grid.RowSpan="2" DisplayDate="2019-01-03"/>
+                    <Button x:Name="btAjouterAdmis" Content="Ajouter Dossier" HorizontalAlignment="Left" Margin="67,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="103" Click="btAjouterAdmis_Click"/>
+                    <Button x:Name="button" Content="Quitter" HorizontalAlignment="Left" Margin="321,91,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+                    <Label x:Name="label22" Content="Numero lit: " HorizontalAlignment="Left" Margin="13,20,0,0" VerticalAlignment="Top" Width="121" Grid.Row="1"/>
+                    <ComboBox x:Name="cbNumeroLit" HorizontalAlignment="Left" Margin="151,20,0,0" VerticalAlignment="Top" Width="236"  IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Numero_lit"  Grid.Row="1" SelectionChanged="cbNumeroLit_SelectionChanged"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

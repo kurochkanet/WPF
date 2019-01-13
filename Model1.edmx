@@ -1,0 +1,1065 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HospytalModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Chambre">
+          <Key>
+            <PropertyRef Name="ID_chambre" />
+          </Key>
+          <Property Name="ID_chambre" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Type" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Numero" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Departement" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Compagnie_Assurance">
+          <Key>
+            <PropertyRef Name="ID_Compagnie" />
+          </Key>
+          <Property Name="ID_Compagnie" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departemente">
+          <Key>
+            <PropertyRef Name="ID_Departement" />
+          </Key>
+          <Property Name="ID_Departement" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DossierAdmission">
+          <Key>
+            <PropertyRef Name="ID_Admission" />
+          </Key>
+          <Property Name="ID_Admission" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date_admission" Type="date" Nullable="false" />
+          <Property Name="Date_chirurgie" Type="date" Nullable="false" />
+          <Property Name="Date_conge" Type="date" />
+          <Property Name="NSS" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Numero_lit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_TypeChirurgie" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="ID_person" />
+          </Key>
+          <Property Name="ID_person" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MotDePass" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NSS" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Frais" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Qte" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Frais">
+          <Key>
+            <PropertyRef Name="ID_frais" />
+          </Key>
+          <Property Name="ID_frais" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_TypeChambre" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Prix" Type="numeric" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="ID_Commodite" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Lit">
+          <Key>
+            <PropertyRef Name="Numero_lit" />
+          </Key>
+          <Property Name="Numero_lit" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Chambre" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="ID_TypeLit" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Occupe" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medecin">
+          <Key>
+            <PropertyRef Name="ID_Medicin" />
+          </Key>
+          <Property Name="ID_Medicin" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Specialite" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Departement" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Ref_parent" />
+          </Key>
+          <Property Name="Ref_parent" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="50" />
+          <Property Name="Code_postal" Type="nvarchar" MaxLength="10" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="NSS" />
+          </Key>
+          <Property Name="NSS" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Date_Naissance" Type="date" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Adresse" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ville" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Province" Type="nvarchar" MaxLength="30" />
+          <Property Name="Code_postal" Type="nvarchar" MaxLength="10" />
+          <Property Name="Telephone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Medicin" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Compagnie" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Ref_parent" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TypeChambre">
+          <Key>
+            <PropertyRef Name="ID_Type" />
+          </Key>
+          <Property Name="ID_Type" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeChirurgie">
+          <Key>
+            <PropertyRef Name="ID_TypeChirurgie" />
+          </Key>
+          <Property Name="ID_TypeChirurgie" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Titre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeCommodite">
+          <Key>
+            <PropertyRef Name="ID_Commodite" />
+          </Key>
+          <Property Name="ID_Commodite" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TypeLit">
+          <Key>
+            <PropertyRef Name="ID_TypeLit" />
+          </Key>
+          <Property Name="Type_lit" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_TypeLit" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Chambre_Departemente">
+          <End Role="Departemente" Type="Self.Departemente" Multiplicity="1" />
+          <End Role="Chambre" Type="Self.Chambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departemente">
+              <PropertyRef Name="ID_Departement" />
+            </Principal>
+            <Dependent Role="Chambre">
+              <PropertyRef Name="ID_Departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chambre_TypeChambre">
+          <End Role="TypeChambre" Type="Self.TypeChambre" Multiplicity="1" />
+          <End Role="Chambre" Type="Self.Chambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChambre">
+              <PropertyRef Name="ID_Type" />
+            </Principal>
+            <Dependent Role="Chambre">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DossierAdmission_Lit">
+          <End Role="Lit" Type="Self.Lit" Multiplicity="1" />
+          <End Role="DossierAdmission" Type="Self.DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lit">
+              <PropertyRef Name="Numero_lit" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="Numero_lit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DossierAdmission_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="DossierAdmission" Type="Self.DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="NSS" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="NSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DossierAdmission_TypeChirurgie">
+          <End Role="TypeChirurgie" Type="Self.TypeChirurgie" Multiplicity="0..1" />
+          <End Role="DossierAdmission" Type="Self.DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChirurgie">
+              <PropertyRef Name="ID_TypeChirurgie" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="ID_TypeChirurgie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facture_Frais">
+          <End Role="Frais" Type="Self.Frais" Multiplicity="1" />
+          <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frais">
+              <PropertyRef Name="ID_frais" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="ID_Frais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facture_Patient">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Facture" Type="Self.Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="NSS" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="NSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Frais_TypeChambre">
+          <End Role="TypeChambre" Type="Self.TypeChambre" Multiplicity="0..1" />
+          <End Role="Frais" Type="Self.Frais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChambre">
+              <PropertyRef Name="ID_Type" />
+            </Principal>
+            <Dependent Role="Frais">
+              <PropertyRef Name="ID_TypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Frais_TypeCommodite">
+          <End Role="TypeCommodite" Type="Self.TypeCommodite" Multiplicity="0..1" />
+          <End Role="Frais" Type="Self.Frais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCommodite">
+              <PropertyRef Name="ID_Commodite" />
+            </Principal>
+            <Dependent Role="Frais">
+              <PropertyRef Name="ID_Commodite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lit_Chambre">
+          <End Role="Chambre" Type="Self.Chambre" Multiplicity="0..1" />
+          <End Role="Lit" Type="Self.Lit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chambre">
+              <PropertyRef Name="ID_chambre" />
+            </Principal>
+            <Dependent Role="Lit">
+              <PropertyRef Name="ID_Chambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lit_TypeLit">
+          <End Role="TypeLit" Type="Self.TypeLit" Multiplicity="0..1" />
+          <End Role="Lit" Type="Self.Lit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLit">
+              <PropertyRef Name="ID_TypeLit" />
+            </Principal>
+            <Dependent Role="Lit">
+              <PropertyRef Name="ID_TypeLit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medecin_Departement">
+          <End Role="Departemente" Type="Self.Departemente" Multiplicity="0..1" />
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departemente">
+              <PropertyRef Name="ID_Departement" />
+            </Principal>
+            <Dependent Role="Medecin">
+              <PropertyRef Name="ID_Departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Compagnie_Assurance">
+          <End Role="Compagnie_Assurance" Type="Self.Compagnie_Assurance" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compagnie_Assurance">
+              <PropertyRef Name="ID_Compagnie" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="ID_Compagnie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Medecin">
+          <End Role="Medecin" Type="Self.Medecin" Multiplicity="1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="ID_Medicin" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="ID_Medicin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Patient_Parent">
+          <End Role="Parent" Type="Self.Parent" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="Ref_parent" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Ref_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospytalModel1StoreContainer">
+          <EntitySet Name="Chambre" EntityType="Self.Chambre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compagnie_Assurance" EntityType="Self.Compagnie_Assurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departemente" EntityType="Self.Departemente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DossierAdmission" EntityType="Self.DossierAdmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facture" EntityType="Self.Facture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Frais" EntityType="Self.Frais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lit" EntityType="Self.Lit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Medecin" EntityType="Self.Medecin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeChambre" EntityType="Self.TypeChambre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeChirurgie" EntityType="Self.TypeChirurgie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeCommodite" EntityType="Self.TypeCommodite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeLit" EntityType="Self.TypeLit" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Chambre_Departemente" Association="Self.FK_Chambre_Departemente">
+            <End Role="Departemente" EntitySet="Departemente" />
+            <End Role="Chambre" EntitySet="Chambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chambre_TypeChambre" Association="Self.FK_Chambre_TypeChambre">
+            <End Role="TypeChambre" EntitySet="TypeChambre" />
+            <End Role="Chambre" EntitySet="Chambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DossierAdmission_Lit" Association="Self.FK_DossierAdmission_Lit">
+            <End Role="Lit" EntitySet="Lit" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DossierAdmission_Patient" Association="Self.FK_DossierAdmission_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DossierAdmission_TypeChirurgie" Association="Self.FK_DossierAdmission_TypeChirurgie">
+            <End Role="TypeChirurgie" EntitySet="TypeChirurgie" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facture_Frais" Association="Self.FK_Facture_Frais">
+            <End Role="Frais" EntitySet="Frais" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facture_Patient" Association="Self.FK_Facture_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Frais_TypeChambre" Association="Self.FK_Frais_TypeChambre">
+            <End Role="TypeChambre" EntitySet="TypeChambre" />
+            <End Role="Frais" EntitySet="Frais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Frais_TypeCommodite" Association="Self.FK_Frais_TypeCommodite">
+            <End Role="TypeCommodite" EntitySet="TypeCommodite" />
+            <End Role="Frais" EntitySet="Frais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lit_Chambre" Association="Self.FK_Lit_Chambre">
+            <End Role="Chambre" EntitySet="Chambre" />
+            <End Role="Lit" EntitySet="Lit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lit_TypeLit" Association="Self.FK_Lit_TypeLit">
+            <End Role="TypeLit" EntitySet="TypeLit" />
+            <End Role="Lit" EntitySet="Lit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medecin_Departement" Association="Self.FK_Medecin_Departement">
+            <End Role="Departemente" EntitySet="Departemente" />
+            <End Role="Medecin" EntitySet="Medecin" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Compagnie_Assurance" Association="Self.FK_Patient_Compagnie_Assurance">
+            <End Role="Compagnie_Assurance" EntitySet="Compagnie_Assurance" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Medecin" Association="Self.FK_Patient_Medecin">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Patient_Parent" Association="Self.FK_Patient_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospytalModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Compagnie_Assurance">
+          <Key>
+            <PropertyRef Name="ID_Compagnie" />
+          </Key>
+          <Property Name="ID_Compagnie" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.FK_Patient_Compagnie_Assurance" FromRole="Compagnie_Assurance" ToRole="Patient" />
+        </EntityType>
+        <EntityType Name="Departemente">
+          <Key>
+            <PropertyRef Name="ID_Departement" />
+          </Key>
+          <Property Name="ID_Departement" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Medecin" Relationship="HospytalModel1.FK_Medecin_Departement" FromRole="Departemente" ToRole="Medecin" />
+          <NavigationProperty Name="Chambre" Relationship="HospytalModel1.FK_Chambre_Departemente" FromRole="Departemente" ToRole="Chambre" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="NSS" />
+          </Key>
+          <Property Name="NSS" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Date_Naissance" Type="DateTime" Precision="0" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ville" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Code_postal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Medicin" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ID_Compagnie" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ref_parent" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Compagnie_Assurance" Relationship="Self.FK_Patient_Compagnie_Assurance" FromRole="Patient" ToRole="Compagnie_Assurance" />
+          <NavigationProperty Name="DossierAdmission" Relationship="HospytalModel1.FK_DossierAdmission_Patient" FromRole="Patient" ToRole="DossierAdmission" />
+          <NavigationProperty Name="Parent" Relationship="HospytalModel1.FK_Patient_Parent" FromRole="Patient" ToRole="Parent" />
+          <NavigationProperty Name="Medecin" Relationship="HospytalModel1.FK_Patient_Medecin" FromRole="Patient" ToRole="Medecin" />
+          <NavigationProperty Name="Facture" Relationship="HospytalModel1.FK_Facture_Patient" FromRole="Patient" ToRole="Facture" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TypeChambre">
+          <Key>
+            <PropertyRef Name="ID_Type" />
+          </Key>
+          <Property Name="ID_Type" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Frais" Relationship="HospytalModel1.FK_Frais_TypeChambre" FromRole="TypeChambre" ToRole="Frais" />
+          <NavigationProperty Name="Chambre" Relationship="HospytalModel1.FK_Chambre_TypeChambre" FromRole="TypeChambre" ToRole="Chambre" />
+          </EntityType>
+        <EntityType Name="TypeCommodite">
+          <Key>
+            <PropertyRef Name="ID_Commodite" />
+          </Key>
+          <Property Name="ID_Commodite" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Frais" Relationship="HospytalModel1.FK_Frais_TypeCommodite" FromRole="TypeCommodite" ToRole="Frais" />
+        </EntityType>
+        <Association Name="FK_Patient_Compagnie_Assurance">
+          <End Role="Compagnie_Assurance" Type="Self.Compagnie_Assurance" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compagnie_Assurance">
+              <PropertyRef Name="ID_Compagnie" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="ID_Compagnie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospytalEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Compagnie_Assurance" EntityType="Self.Compagnie_Assurance" />
+          <EntitySet Name="Departemente" EntityType="Self.Departemente" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TypeChambre" EntityType="Self.TypeChambre" />
+          <EntitySet Name="TypeCommodite" EntityType="Self.TypeCommodite" />
+          <AssociationSet Name="FK_Patient_Compagnie_Assurance" Association="Self.FK_Patient_Compagnie_Assurance">
+            <End Role="Compagnie_Assurance" EntitySet="Compagnie_Assurance" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <EntitySet Name="TypeChirurgie" EntityType="HospytalModel1.TypeChirurgie" />
+          <EntitySet Name="DossierAdmission" EntityType="HospytalModel1.DossierAdmission" />
+          <AssociationSet Name="FK_DossierAdmission_Patient" Association="HospytalModel1.FK_DossierAdmission_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DossierAdmission_TypeChirurgie" Association="HospytalModel1.FK_DossierAdmission_TypeChirurgie">
+            <End Role="TypeChirurgie" EntitySet="TypeChirurgie" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <EntitySet Name="Frais" EntityType="HospytalModel1.Frais" />
+          <AssociationSet Name="FK_Frais_TypeChambre" Association="HospytalModel1.FK_Frais_TypeChambre">
+            <End Role="TypeChambre" EntitySet="TypeChambre" />
+            <End Role="Frais" EntitySet="Frais" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Frais_TypeCommodite" Association="HospytalModel1.FK_Frais_TypeCommodite">
+            <End Role="TypeCommodite" EntitySet="TypeCommodite" />
+            <End Role="Frais" EntitySet="Frais" />
+          </AssociationSet>
+          <EntitySet Name="Parent" EntityType="HospytalModel1.Parent" />
+          <AssociationSet Name="FK_Patient_Parent" Association="HospytalModel1.FK_Patient_Parent">
+            <End Role="Parent" EntitySet="Parent" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <EntitySet Name="Medecin" EntityType="HospytalModel1.Medecin" />
+          <AssociationSet Name="FK_Patient_Medecin" Association="HospytalModel1.FK_Patient_Medecin">
+            <End Role="Medecin" EntitySet="Medecin" />
+            <End Role="Patient" EntitySet="Patient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medecin_Departement" Association="HospytalModel1.FK_Medecin_Departement">
+            <End Role="Departemente" EntitySet="Departemente" />
+            <End Role="Medecin" EntitySet="Medecin" />
+          </AssociationSet>
+          <EntitySet Name="Employe" EntityType="HospytalModel1.Employe" />
+          <EntitySet Name="Chambre" EntityType="HospytalModel1.Chambre" />
+          <AssociationSet Name="FK_Chambre_Departemente" Association="HospytalModel1.FK_Chambre_Departemente">
+            <End Role="Departemente" EntitySet="Departemente" />
+            <End Role="Chambre" EntitySet="Chambre" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chambre_TypeChambre" Association="HospytalModel1.FK_Chambre_TypeChambre">
+            <End Role="TypeChambre" EntitySet="TypeChambre" />
+            <End Role="Chambre" EntitySet="Chambre" />
+          </AssociationSet>
+          <EntitySet Name="TypeLit" EntityType="HospytalModel1.TypeLit" />
+          <EntitySet Name="Lit" EntityType="HospytalModel1.Lit" />
+          <AssociationSet Name="FK_Lit_Chambre" Association="HospytalModel1.FK_Lit_Chambre">
+            <End Role="Chambre" EntitySet="Chambre" />
+            <End Role="Lit" EntitySet="Lit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DossierAdmission_Lit" Association="HospytalModel1.FK_DossierAdmission_Lit">
+            <End Role="Lit" EntitySet="Lit" />
+            <End Role="DossierAdmission" EntitySet="DossierAdmission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Lit_TypeLit" Association="HospytalModel1.FK_Lit_TypeLit">
+            <End Role="TypeLit" EntitySet="TypeLit" />
+            <End Role="Lit" EntitySet="Lit" />
+          </AssociationSet>
+          <EntitySet Name="Facture" EntityType="HospytalModel1.Facture" />
+          <AssociationSet Name="FK_Facture_Frais" Association="HospytalModel1.FK_Facture_Frais">
+            <End Role="Frais" EntitySet="Frais" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Facture_Patient" Association="HospytalModel1.FK_Facture_Patient">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Facture" EntitySet="Facture" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="TypeChirurgie">
+          <Key>
+            <PropertyRef Name="ID_TypeChirurgie" />
+          </Key>
+          <Property Name="ID_TypeChirurgie" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Titre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DossierAdmission" Relationship="HospytalModel1.FK_DossierAdmission_TypeChirurgie" FromRole="TypeChirurgie" ToRole="DossierAdmission" />
+        </EntityType>
+        <EntityType Name="DossierAdmission">
+          <Key>
+            <PropertyRef Name="ID_Admission" />
+          </Key>
+          <Property Name="ID_Admission" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Date_admission" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_chirurgie" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_conge" Type="DateTime" Precision="0" />
+          <Property Name="NSS" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Numero_lit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_TypeChirurgie" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Patient" Relationship="HospytalModel1.FK_DossierAdmission_Patient" FromRole="DossierAdmission" ToRole="Patient" />
+          <NavigationProperty Name="TypeChirurgie" Relationship="HospytalModel1.FK_DossierAdmission_TypeChirurgie" FromRole="DossierAdmission" ToRole="TypeChirurgie" />
+          <NavigationProperty Name="Lit" Relationship="HospytalModel1.FK_DossierAdmission_Lit" FromRole="DossierAdmission" ToRole="Lit" />
+        </EntityType>
+        <Association Name="FK_DossierAdmission_Patient">
+          <End Type="HospytalModel1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="HospytalModel1.DossierAdmission" Role="DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="NSS" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="NSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DossierAdmission_TypeChirurgie">
+          <End Type="HospytalModel1.TypeChirurgie" Role="TypeChirurgie" Multiplicity="0..1" />
+          <End Type="HospytalModel1.DossierAdmission" Role="DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChirurgie">
+              <PropertyRef Name="ID_TypeChirurgie" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="ID_TypeChirurgie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Frais">
+          <Key>
+            <PropertyRef Name="ID_frais" />
+          </Key>
+          <Property Name="ID_frais" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_TypeChambre" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Prix" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ID_Commodite" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="TypeChambre" Relationship="HospytalModel1.FK_Frais_TypeChambre" FromRole="Frais" ToRole="TypeChambre" />
+          <NavigationProperty Name="TypeCommodite" Relationship="HospytalModel1.FK_Frais_TypeCommodite" FromRole="Frais" ToRole="TypeCommodite" />
+          <NavigationProperty Name="Facture" Relationship="HospytalModel1.FK_Facture_Frais" FromRole="Frais" ToRole="Facture" />
+        </EntityType>
+        <Association Name="FK_Frais_TypeChambre">
+          <End Type="HospytalModel1.TypeChambre" Role="TypeChambre" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Frais" Role="Frais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChambre">
+              <PropertyRef Name="ID_Type" />
+            </Principal>
+            <Dependent Role="Frais">
+              <PropertyRef Name="ID_TypeChambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Frais_TypeCommodite">
+          <End Type="HospytalModel1.TypeCommodite" Role="TypeCommodite" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Frais" Role="Frais" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeCommodite">
+              <PropertyRef Name="ID_Commodite" />
+            </Principal>
+            <Dependent Role="Frais">
+              <PropertyRef Name="ID_Commodite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Parent">
+          <Key>
+            <PropertyRef Name="Ref_parent" />
+          </Key>
+          <Property Name="Ref_parent" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adresse" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ville" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Code_postal" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Patient" Relationship="HospytalModel1.FK_Patient_Parent" FromRole="Parent" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK_Patient_Parent">
+          <End Type="HospytalModel1.Parent" Role="Parent" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parent">
+              <PropertyRef Name="Ref_parent" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="Ref_parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Medecin">
+          <Key>
+            <PropertyRef Name="ID_Medicin" />
+          </Key>
+          <Property Name="ID_Medicin" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Specialite" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Departement" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Patient" Relationship="HospytalModel1.FK_Patient_Medecin" FromRole="Medecin" ToRole="Patient" />
+          <NavigationProperty Name="Departemente" Relationship="HospytalModel1.FK_Medecin_Departement" FromRole="Medecin" ToRole="Departemente" />
+        </EntityType>
+        <Association Name="FK_Patient_Medecin">
+          <End Type="HospytalModel1.Medecin" Role="Medecin" Multiplicity="1" />
+          <End Type="HospytalModel1.Patient" Role="Patient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="ID_Medicin" />
+            </Principal>
+            <Dependent Role="Patient">
+              <PropertyRef Name="ID_Medicin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medecin_Departement">
+          <End Type="HospytalModel1.Departemente" Role="Departemente" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Medecin" Role="Medecin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departemente">
+              <PropertyRef Name="ID_Departement" />
+            </Principal>
+            <Dependent Role="Medecin">
+              <PropertyRef Name="ID_Departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="ID_person" />
+          </Key>
+          <Property Name="ID_person" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MotDePass" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Chambre">
+          <Key>
+            <PropertyRef Name="ID_chambre" />
+          </Key>
+          <Property Name="ID_chambre" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ID_Type" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Numero" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ID_Departement" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Departemente" Relationship="HospytalModel1.FK_Chambre_Departemente" FromRole="Chambre" ToRole="Departemente" />
+          <NavigationProperty Name="TypeChambre" Relationship="HospytalModel1.FK_Chambre_TypeChambre" FromRole="Chambre" ToRole="TypeChambre" />
+          <NavigationProperty Name="Lit" Relationship="HospytalModel1.FK_Lit_Chambre" FromRole="Chambre" ToRole="Lit" />
+        </EntityType>
+        <Association Name="FK_Chambre_Departemente">
+          <End Type="HospytalModel1.Departemente" Role="Departemente" Multiplicity="1" />
+          <End Type="HospytalModel1.Chambre" Role="Chambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departemente">
+              <PropertyRef Name="ID_Departement" />
+            </Principal>
+            <Dependent Role="Chambre">
+              <PropertyRef Name="ID_Departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chambre_TypeChambre">
+          <End Type="HospytalModel1.TypeChambre" Role="TypeChambre" Multiplicity="1" />
+          <End Type="HospytalModel1.Chambre" Role="Chambre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeChambre">
+              <PropertyRef Name="ID_Type" />
+            </Principal>
+            <Dependent Role="Chambre">
+              <PropertyRef Name="ID_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TypeLit">
+          <Key>
+            <PropertyRef Name="ID_TypeLit" />
+          </Key>
+          <Property Name="Type_lit" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_TypeLit" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Lit" Relationship="HospytalModel1.FK_Lit_TypeLit" FromRole="TypeLit" ToRole="Lit" />
+        </EntityType>
+        <EntityType Name="Lit">
+          <Key>
+            <PropertyRef Name="Numero_lit" />
+          </Key>
+          <Property Name="Numero_lit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Chambre" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ID_TypeLit" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Occupe" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Chambre" Relationship="HospytalModel1.FK_Lit_Chambre" FromRole="Lit" ToRole="Chambre" />
+          <NavigationProperty Name="DossierAdmission" Relationship="HospytalModel1.FK_DossierAdmission_Lit" FromRole="Lit" ToRole="DossierAdmission" />
+          <NavigationProperty Name="TypeLit" Relationship="HospytalModel1.FK_Lit_TypeLit" FromRole="Lit" ToRole="TypeLit" />
+        </EntityType>
+        <Association Name="FK_Lit_Chambre">
+          <End Type="HospytalModel1.Chambre" Role="Chambre" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Lit" Role="Lit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chambre">
+              <PropertyRef Name="ID_chambre" />
+            </Principal>
+            <Dependent Role="Lit">
+              <PropertyRef Name="ID_Chambre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DossierAdmission_Lit">
+          <End Type="HospytalModel1.Lit" Role="Lit" Multiplicity="1" />
+          <End Type="HospytalModel1.DossierAdmission" Role="DossierAdmission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lit">
+              <PropertyRef Name="Numero_lit" />
+            </Principal>
+            <Dependent Role="DossierAdmission">
+              <PropertyRef Name="Numero_lit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Lit_TypeLit">
+          <End Type="HospytalModel1.TypeLit" Role="TypeLit" Multiplicity="0..1" />
+          <End Type="HospytalModel1.Lit" Role="Lit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeLit">
+              <PropertyRef Name="ID_TypeLit" />
+            </Principal>
+            <Dependent Role="Lit">
+              <PropertyRef Name="ID_TypeLit" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Facture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NSS" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ID_Frais" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Qte" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="Frais" Relationship="HospytalModel1.FK_Facture_Frais" FromRole="Facture" ToRole="Frais" />
+          <NavigationProperty Name="Patient" Relationship="HospytalModel1.FK_Facture_Patient" FromRole="Facture" ToRole="Patient" />
+        </EntityType>
+        <Association Name="FK_Facture_Frais">
+          <End Type="HospytalModel1.Frais" Role="Frais" Multiplicity="1" />
+          <End Type="HospytalModel1.Facture" Role="Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Frais">
+              <PropertyRef Name="ID_frais" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="ID_Frais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Facture_Patient">
+          <End Type="HospytalModel1.Patient" Role="Patient" Multiplicity="1" />
+          <End Type="HospytalModel1.Facture" Role="Facture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="NSS" />
+            </Principal>
+            <Dependent Role="Facture">
+              <PropertyRef Name="NSS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospytalModel1StoreContainer" CdmEntityContainer="HospytalEntities2">
+          <EntitySetMapping Name="Compagnie_Assurance">
+            <EntityTypeMapping TypeName="HospytalModel1.Compagnie_Assurance">
+              <MappingFragment StoreEntitySet="Compagnie_Assurance">
+                <ScalarProperty Name="ID_Compagnie" ColumnName="ID_Compagnie" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departemente">
+            <EntityTypeMapping TypeName="HospytalModel1.Departemente">
+              <MappingFragment StoreEntitySet="Departemente">
+                <ScalarProperty Name="ID_Departement" ColumnName="ID_Departement" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patient">
+            <EntityTypeMapping TypeName="HospytalModel1.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="Date_Naissance" ColumnName="Date_Naissance" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Code_postal" ColumnName="Code_postal" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="ID_Medicin" ColumnName="ID_Medicin" />
+                <ScalarProperty Name="ID_Compagnie" ColumnName="ID_Compagnie" />
+                <ScalarProperty Name="Ref_parent" ColumnName="Ref_parent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HospytalModel1.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeChambre">
+            <EntityTypeMapping TypeName="HospytalModel1.TypeChambre">
+              <MappingFragment StoreEntitySet="TypeChambre">
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeCommodite">
+            <EntityTypeMapping TypeName="HospytalModel1.TypeCommodite">
+              <MappingFragment StoreEntitySet="TypeCommodite">
+                <ScalarProperty Name="ID_Commodite" ColumnName="ID_Commodite" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeChirurgie">
+            <EntityTypeMapping TypeName="HospytalModel1.TypeChirurgie">
+              <MappingFragment StoreEntitySet="TypeChirurgie">
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="ID_TypeChirurgie" ColumnName="ID_TypeChirurgie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DossierAdmission">
+            <EntityTypeMapping TypeName="HospytalModel1.DossierAdmission">
+              <MappingFragment StoreEntitySet="DossierAdmission">
+                <ScalarProperty Name="ID_TypeChirurgie" ColumnName="ID_TypeChirurgie" />
+                <ScalarProperty Name="Numero_lit" ColumnName="Numero_lit" />
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="Date_conge" ColumnName="Date_conge" />
+                <ScalarProperty Name="Date_chirurgie" ColumnName="Date_chirurgie" />
+                <ScalarProperty Name="Date_admission" ColumnName="Date_admission" />
+                <ScalarProperty Name="ID_Admission" ColumnName="ID_Admission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Frais">
+            <EntityTypeMapping TypeName="HospytalModel1.Frais">
+              <MappingFragment StoreEntitySet="Frais">
+                <ScalarProperty Name="ID_Commodite" ColumnName="ID_Commodite" />
+                <ScalarProperty Name="Prix" ColumnName="Prix" />
+                <ScalarProperty Name="ID_TypeChambre" ColumnName="ID_TypeChambre" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_frais" ColumnName="ID_frais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parent">
+            <EntityTypeMapping TypeName="HospytalModel1.Parent">
+              <MappingFragment StoreEntitySet="Parent">
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Code_postal" ColumnName="Code_postal" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Ref_parent" ColumnName="Ref_parent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medecin">
+            <EntityTypeMapping TypeName="HospytalModel1.Medecin">
+              <MappingFragment StoreEntitySet="Medecin">
+                <ScalarProperty Name="ID_Departement" ColumnName="ID_Departement" />
+                <ScalarProperty Name="Specialite" ColumnName="Specialite" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_Medicin" ColumnName="ID_Medicin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employe">
+            <EntityTypeMapping TypeName="HospytalModel1.Employe">
+              <MappingFragment StoreEntitySet="Employe">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="MotDePass" ColumnName="MotDePass" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="ID_person" ColumnName="ID_person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chambre">
+            <EntityTypeMapping TypeName="HospytalModel1.Chambre">
+              <MappingFragment StoreEntitySet="Chambre">
+                <ScalarProperty Name="ID_Departement" ColumnName="ID_Departement" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="ID_Type" ColumnName="ID_Type" />
+                <ScalarProperty Name="ID_chambre" ColumnName="ID_chambre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeLit">
+            <EntityTypeMapping TypeName="HospytalModel1.TypeLit">
+              <MappingFragment StoreEntitySet="TypeLit">
+                <ScalarProperty Name="ID_TypeLit" ColumnName="ID_TypeLit" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Type_lit" ColumnName="Type_lit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Lit">
+            <EntityTypeMapping TypeName="HospytalModel1.Lit">
+              <MappingFragment StoreEntitySet="Lit">
+                <ScalarProperty Name="Occupe" ColumnName="Occupe" />
+                <ScalarProperty Name="ID_TypeLit" ColumnName="ID_TypeLit" />
+                <ScalarProperty Name="ID_Chambre" ColumnName="ID_Chambre" />
+                <ScalarProperty Name="Numero_lit" ColumnName="Numero_lit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facture">
+            <EntityTypeMapping TypeName="HospytalModel1.Facture">
+              <MappingFragment StoreEntitySet="Facture">
+                <ScalarProperty Name="Qte" ColumnName="Qte" />
+                <ScalarProperty Name="ID_Frais" ColumnName="ID_Frais" />
+                <ScalarProperty Name="NSS" ColumnName="NSS" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

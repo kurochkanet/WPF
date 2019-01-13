@@ -1,0 +1,23 @@
+﻿<Window x:Class="Hospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="HospitaLogin" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="D:\Formation\C#_Toufik\Projet\Photos\15002.jpg"/>
+        </Grid.Background>
+        <Canvas HorizontalAlignment="Left" Height="155" Margin="142,67,0,0" VerticalAlignment="Top" Width="240" Background="#FF61A1D6">
+            <Label x:Name="label" Content="Login" Canvas.Left="45" Canvas.Top="24" RenderTransformOrigin="1.167,0.5"/>
+            <Label x:Name="label1" Content="Mot de passe" Canvas.Left="8" Canvas.Top="64"/>
+            <TextBox x:Name="tbLogin" Height="23" Canvas.Left="100" TextWrapping="Wrap" Canvas.Top="24" Width="120"/>
+            <PasswordBox x:Name="passwordBox" Canvas.Left="100" Canvas.Top="67" Width="120" Height="23"/>
+            <Button x:Name="btOK" Content="OK" Canvas.Left="26" Canvas.Top="117" Width="74" Background="#FFC4DCF0" Click="button_OK"/>
+            <Button x:Name="btAnnuler" Content="Annuler" Canvas.Left="130" Canvas.Top="117" Width="76" Background="#FFC4DCF0" Click="button1_Annuler"/>
+        </Canvas>
+
+    </Grid>
+</Window>

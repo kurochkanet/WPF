@@ -1,0 +1,96 @@
+﻿<Window x:Class="Hospital.FenetreAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="FenetreAdmin" Height="474.474" Width="539.343" Closing="Window_Closing" Loaded="Window_Loaded">
+    <Grid Background="#FFA7E3E6" Margin="-1,0,1,0">
+
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="457" VerticalAlignment="Top" Width="531" Margin="0,0,0,-13">
+            <TabItem Header="L'état">
+                <Grid Background="#FFA7E3E6" Margin="0,-3,-7,-4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="144*"/>
+                        <ColumnDefinition Width="129*"/>
+                        <ColumnDefinition Width="233*"/>
+                    </Grid.ColumnDefinitions>
+                    <GroupBox x:Name="gbMed" Header="Medecin" HorizontalAlignment="Left" Margin="35,17,0,0" VerticalAlignment="Top" Height="140" Width="186" FontSize="14" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btQuitterMed" Content="Quitter" Grid.Column="2" HorizontalAlignment="Left" Margin="174,0,0,12" Width="54" Click="btQuitterMed_Click" Height="22" VerticalAlignment="Bottom"/>
+                    <GroupBox x:Name="gbEmp" Header="Employe" HorizontalAlignment="Left" Margin="26,17,0,0" VerticalAlignment="Top" Height="140" Width="185" FontSize="14" Grid.Column="2"/>
+
+                    <Button x:Name="btAjoutMed" Content="Ajouter Medecin" HorizontalAlignment="Left" Margin="74,59,0,0" VerticalAlignment="Top" Width="110" Grid.ColumnSpan="2" Click="btAjoutMed_Click" Height="22"/>
+                    <Button x:Name="btModifierMed" Content="Modifier Medecin" HorizontalAlignment="Left" Margin="74,102,0,0" VerticalAlignment="Top" Width="110" Grid.ColumnSpan="2" Click="btModifierMed_Click" Height="22"/>
+                    <Grid Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="313" VerticalAlignment="Top" Width="520">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="93*"/>
+                            <ColumnDefinition Width="11*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="label" Content="Nom" HorizontalAlignment="Left" Margin="8,181,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold"/>
+                        <TextBox x:Name="tbNomMed" HorizontalAlignment="Left" Height="23" Margin="87,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
+
+
+                    </Grid>
+                    <Label x:Name="label1" Content="Prenom" HorizontalAlignment="Left" Margin="7,214,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Height="23" Width="47"/>
+                    <TextBox x:Name="tbPrenomMed" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="87,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.5,0.5">
+                        <TextBox.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.626"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-0.656"/>
+                            </TransformGroup>
+                        </TextBox.RenderTransform>
+                    </TextBox>
+                    <Label x:Name="label2" Content="Specialite" HorizontalAlignment="Left" Margin="5,246,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Height="23" Width="55"/>
+                    <TextBox x:Name="tbSpecialite" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="86,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
+                    <Button x:Name="btOKMedecin" Content="Ajouter" HorizontalAlignment="Left" Margin="106,331,0,0" VerticalAlignment="Top" Width="75" Click="btOKMedecin_Click" Height="22" Grid.ColumnSpan="2"/>
+                    <Label x:Name="label3" Content="Departement" HorizontalAlignment="Left" Margin="3,277,0,0" VerticalAlignment="Top" FontSize="10" FontWeight="Bold" Height="23" Width="72"/>
+                    <ComboBox x:Name="cbDep" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="86,278,0,0" VerticalAlignment="Top" Width="141" IsSynchronizedWithCurrentItem="False" ItemsSource="{Binding}" DisplayMemberPath="Nom" SelectionChanged="cbDep_SelectionChanged" Height="22"/>
+                    <Label x:Name="label4" Content="Nom" Grid.Column="2" HorizontalAlignment="Left" Margin="5,172,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="26"/>
+                    <Label x:Name="label5" Content="Prenom" Grid.Column="2" HorizontalAlignment="Left" Margin="4,201,0,0" VerticalAlignment="Top" Width="76" FontWeight="Bold" Height="26"/>
+                    <Label x:Name="label6" Content="Login" Grid.Column="2" HorizontalAlignment="Left" Margin="5,228,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="26"/>
+                    <Label x:Name="label7" Content="MotDePasse" Grid.Column="2" HorizontalAlignment="Left" Margin="5,258,0,0" VerticalAlignment="Top" FontWeight="Bold" Height="26" Width="80"/>
+                    <Label x:Name="label8" Content="Position" Grid.Column="2" HorizontalAlignment="Left" Margin="5,287,0,0" VerticalAlignment="Top" Width="75" FontWeight="Bold" Height="26"/>
+                    <Button x:Name="btAjouterEmploye" Content="Ajouter" Grid.Column="2" HorizontalAlignment="Left" Margin="75,330,0,0" VerticalAlignment="Top" Width="75" Click="btAjouterEmploye_Click" Height="22"/>
+                    <TextBox x:Name="tbNomEmp" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="84,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                    <TextBox x:Name="tbPrenomEmp" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="84,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                    <TextBox x:Name="tbLogin" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="84,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                    <TextBox x:Name="tbMotdeP" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="84,259,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                    <TextBox x:Name="tbPosition" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="84,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127"/>
+                    <Button x:Name="btModifMed" Content="Modifier" HorizontalAlignment="Left" Margin="107,369,0,0" VerticalAlignment="Top" Width="75" Height="22" Grid.ColumnSpan="2" Click="btModifMed_Click"/>
+                    <GroupBox x:Name="gbActMed" Grid.ColumnSpan="2" Header="Activite" HorizontalAlignment="Left" Height="40" Margin="5,312,0,0" VerticalAlignment="Top" Width="249"/>
+                    <RadioButton x:Name="rbAc" Content="Active" Margin="56,329,33,0" VerticalAlignment="Top" Height="16" FontSize="11" FontWeight="Bold"/>
+                    <RadioButton x:Name="rbNA" Content="Non active" Grid.Column="1" HorizontalAlignment="Left" Margin="9,330,0,0" VerticalAlignment="Top" Width="95" FontWeight="Bold" FontSize="11" Height="13"/>
+                    <GroupBox x:Name="gbActMed_Copy" Header="Activite" HorizontalAlignment="Left" Height="40" Margin="6,311,0,0" VerticalAlignment="Top" Width="227" Grid.Column="2"/>
+                    <RadioButton x:Name="rbAc_Copy" Content="Active" Margin="49,328,138,0" VerticalAlignment="Top" Height="16" FontSize="11" FontWeight="Bold" Grid.Column="2"/>
+                    <RadioButton x:Name="rbNA_Copy" Content="Non active" Grid.Column="2" HorizontalAlignment="Left" Margin="131,329,0,0" VerticalAlignment="Top" Width="80" FontWeight="Bold" FontSize="11" Height="13"/>
+                    <Button x:Name="btModifEmp" Content="Modifier" HorizontalAlignment="Left" Margin="75,369,0,0" VerticalAlignment="Top" Width="75" Height="22" Grid.Column="2" Click="btModifEmp_Click"/>
+                    <Button x:Name="btAjoutEmploye" Content="Ajouter Employe" HorizontalAlignment="Left" Margin="49,59,0,0" VerticalAlignment="Top" Width="128" Grid.Column="2" Click="btAjoutEmploye_Click" Height="22"/>
+                    <Button x:Name="btModEmp" Content="Modifier Employe" HorizontalAlignment="Left" Margin="49,102,0,0" VerticalAlignment="Top" Width="128" Grid.Column="2" Height="22" Click="btModEmp_Click_1"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Consultation">
+                <Grid Background="#FFA7E3E6" Margin="-1,-3,-3,-50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="208*"/>
+                        <ColumnDefinition Width="263*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="btAjTC" Content="Chambre" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="78" FontSize="11" Grid.Column="1" Click="btAjTC_Click"/>
+                    <Button x:Name="btDeparte" Content="Departement" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Width="79" FontSize="11" Grid.Column="1" Click="btDeparte_Click"/>
+                    <Button x:Name="btLit" Content="Lit" Grid.Column="1" HorizontalAlignment="Left" Margin="0,95,0,0" VerticalAlignment="Top" Width="75" Click="btLit_Click"/>
+                    <Button x:Name="btCommodite" Content="Commodite" Grid.Column="1" HorizontalAlignment="Left" Margin="0,136,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="button1" Content="Assurence" Grid.Column="2" HorizontalAlignment="Left" Margin="110,9,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btFrais" Grid.ColumnSpan="2" Content="Frais" Grid.Column="1" HorizontalAlignment="Left" Margin="163,10,0,0" VerticalAlignment="Top" Width="75"/>
+                    <Button x:Name="btFacture" Content="Facture" Grid.Column="1" HorizontalAlignment="Left" Margin="163,52,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Window>

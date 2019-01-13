@@ -1,0 +1,13 @@
+﻿<Window x:Class="Hospital.Lit_dic"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="Lit_dic" Height="350" Width="400" Loaded="Window_Loaded">
+    <Grid Background="#FFA7E3E6">
+        <Label x:Name="label2" Content="Type Lit:" HorizontalAlignment="Left" Margin="12,10,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DataGrid x:Name="dgLit" HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top" Height="94" Width="181"/>
+    </Grid>
+</Window>
